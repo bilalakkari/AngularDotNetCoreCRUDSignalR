@@ -1,0 +1,39 @@
+<h2>Data loaded from the Web API:</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>FNAME</th>
+    <th>LNAME</th>
+    <th>EMAIL</th>
+    <th>ACTIONS</th>
+  </tr>
+  <tr *ngFor="let u of allUsersData">
+    <td>{{u.id}}</td>
+    <td>{{u.fname}}</td>
+    <td>{{u.lname}}</td>
+    <td>{{u.email}}</td>
+    <td>
+      <button (click)="deleteUser(u)">delete</button>
+      <button (click)="editUser(u)">edit</button>
+    </td>
+  </tr>
+</table>
+
+<br>
+
+{{allUsersData.length}}
+
+<form #form="ngForm" [formGroup]="formValue">
+  <input type="hidden" placeholder="ID" formControlName="ID">
+  <br>
+  <label for="FNAME">FNAME: </label>
+  <input type="text" placeholder="FNAME" formControlName="FNAME">
+  <br>
+  <label for="LNAME">LNAME: </label>
+  <input type="text" placeholder="LNAME" formControlName="LNAME">
+  <br>
+  <label for="EMAIL">EMAIL: </label>
+  <input type="text" placeholder="EMAIL" formControlName="EMAIL">
+  <br>
+  <button (click)="addNewUser(form)">add new user</button>
+</form>
